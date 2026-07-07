@@ -4,7 +4,7 @@
     \item Requirements:
       \begin{itemize}
         \item Kokkos 4.0 or newer
-        \item C++17/Fortran08 compiler suites
+        \item C\texttt{++}17/Fortran08 compiler suites
       \end{itemize}
     \item Configure\\
       \texttt{cmake -DKokkos\_ROOT=/kokkos/path /interop/path}
@@ -60,7 +60,7 @@ end program my_kokkos_code
 \begin{frame}{Kokkos::View}
   \begin{itemize}
     \item \texttt{Kokkos::View} is Kokkos equivalent to an array
-    \item \texttt{Kokkos::View} can have up to 8 dimensions in C++ but they are
+    \item \texttt{Kokkos::View} can have up to 8 dimensions in C\texttt{++} but they are
       limited to 7 dimensions in Fortran due to limitation of the library
     \item Supported Fortran types: logical, 32-bit integer, 64-bit
       integer, 32-bit real, 64-bit real, 32-bit complex, 64-bit complex, and
@@ -102,7 +102,7 @@ use, intrinsic :: iso_c_binding
 use, intrinsic :: iso_fortran_env
 use :: flcl_mod
 
-! Kokkos View only accessible from C++
+! Kokkos View only accessible from C\texttt{++}
 type(view_r64_1d_t) :: v_c_y
 ! Pointer to access the Kokkos View from Fortran
 real(real64), pointer, dimension(:) :: c_y
@@ -123,7 +123,7 @@ call kokkos_deallocate_view(c_y, v_c_y)
       they are composed of two \texttt{Kokkos::View}s, one on the host and one on
       the device.
     \item It is the user's responsibility to synchronize the data
-    \item The synchronization must be done in C++
+    \item The synchronization must be done in C\texttt{++}
     \item Supported memory spaces: \texttt{Kokkos::HostSpace},
       \texttt{Kokkos::Cuda}, \texttt{Kokkos::HIP}, and \texttt{Kokkos::SYCL}
     \item \texttt{Kokkos::DualView} cannot be accessed directly from Fortran instead
@@ -152,9 +152,9 @@ call kokkos_deallocate_dualview(c_y, v_c_y)
 
 \begin{frame}{Kernel}
   \begin{itemize}
-    \item Kernels using Kokkos are written in C++
+    \item Kernels using Kokkos are written in C\texttt{++}
     \item Use C-binding from Fortran standard 
-    \item Create a subroutine that calls the C++ function
+    \item Create a subroutine that calls the C\texttt{++} function
   \end{itemize}
 \end{frame}
 

@@ -124,8 +124,8 @@ parallel_for("VectorLoop",TeamPolicy<>(0,N/V,V),
   \end{code}
 \end{frame}
 
-\begin{frame}[fragile]{C++26 SIMD}
-	The ISO C++ standard has data-parallel types (\texttt{SIMD}) (in \emph{C++26}):
+\begin{frame}[fragile]{C\texttt{++}26 SIMD}
+	The ISO C\texttt{++} standard has data-parallel types (\texttt{SIMD}) (in \emph{C\texttt{++}26}):
 
   \begin{code}[linebackgroundcolor={},keywords={template,class,public,using}]
 template< class T, class Abi >
@@ -146,7 +146,7 @@ public:
 
 \end{frame}
 
-\begin{frame}[fragile]{C++26 SIMD ABI}
+\begin{frame}[fragile]{C\texttt{++}26 SIMD ABI}
 One interesting innovation here is the \texttt{Abi} parameter allowing for different, hardware specific, implementations.
 
 	\vspace{8pt}
@@ -183,7 +183,7 @@ The most important components of \texttt{basic\_simd} are:
 \end{frame}
 
 \begin{frame}[fragile]{Kokkos SIMD}
-  As with the C++26 SIMD type, it takes a data type and ABI
+  As with the C\texttt{++}26 SIMD type, it takes a data type and ABI
   \begin{code}
      template <class T, class Abi>
      class basic_simd;
