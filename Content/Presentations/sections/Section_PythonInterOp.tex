@@ -2,7 +2,7 @@
 % Motivation
 %  - data interop with numpy
 %  - have arrays in numpy alias Kokkos::Views allocation
-% 1) Application in Python, performance critical stuff in C++
+% 1) Application in Python, performance critical stuff in C\texttt{++}
 %  - how to create views/arrays and alias them
 
 
@@ -18,8 +18,8 @@
 
   \textbf{Learning objectives:}
   \begin{itemize}
-    \item {Allocating data in Python and viewing it as Kokkos Views in C++.}
-    \item {Allocating data in C++ and viewing it as Numpy Arrays in Python.}
+    \item {Allocating data in Python and viewing it as Kokkos Views in C\texttt{++}.}
+    \item {Allocating data in C\texttt{++} and viewing it as Numpy Arrays in Python.}
   \end{itemize}
 
   \vspace{-20pt}
@@ -30,7 +30,7 @@
 
 \begin{frame}[fragile]{Why do we need this?}
 
-\textbf{Work-flows orchestrated by Python with the heavy lifting in C++ is increasing in popularity}
+\textbf{Work-flows orchestrated by Python with the heavy lifting in C\texttt{++} is increasing in popularity}
 
 \begin{itemize}
   \item Python is excellent for data pre-processing, post-processing, and visualization
@@ -52,13 +52,13 @@
 \end{frame}
 
 \begin{frame}[fragile]{PyBind11}
-\textbf{PyBind11 is a C++ template library for mapping C++ types and functions to Python}
+\textbf{PyBind11 is a C\texttt{++} template library for mapping C\texttt{++} types and functions to Python}
 
 \begin{itemize}
-  \item Despite the syntax of Python having more similarities to C++ than C (e.g. classes), 
+  \item Despite the syntax of Python having more similarities to C\texttt{++} than C (e.g. classes),
   the most popular implementation of the Python interpreter is written in C (CPython)
   \begin{itemize}
-    \item C++ code needs to be translated into implementations of the CPython API
+    \item C\texttt{++} code needs to be translated into implementations of the CPython API
     \item PyBind11 provides this translation through template meta-programming
   \end{itemize}
   \item NumPy is the \textit{de facto} standard for arrays in Python
@@ -76,8 +76,8 @@
 \begin{itemize}
   \item The primary caveat will be how to invoke \lstinline|kokkos.finalize()|
   \begin{itemize}
-  \item Invoking \lstinline|Kokkos::finalize()| in C++ requires all Kokkos data structures to no longer have reference counts
-  \item Python scoping rules are quite different than C++ scoping rules
+  \item Invoking \lstinline|Kokkos::finalize()| in C\texttt{++} requires all Kokkos data structures to no longer have reference counts
+  \item Python scoping rules are quite different than C\texttt{++} scoping rules
   \item \lstinline|kokkos.finalize()| will run the garbage collector but the invocation must be in a different function
   outside of any variables holding a reference to a Kokkos View.
   \end{itemize}
@@ -194,7 +194,7 @@ PYBIND11_MODULE(example, ex) {
   ///
   ex.def(
     "generate_view",          // python function
-    &generate_view,           // C++ function
+    &generate_view,           // C\texttt{++} function
     "Generate a random view", // doc string
     py::arg("n") = 10,        // default arg
     py::arg("m") = 2          // default arg
@@ -217,7 +217,7 @@ import example
 def main(args):
     view = example.generate_view(args.n, args.m)
     arr = numpy.array(view, copy=False)
-    # should see printout of data set in C++ code
+    # should see printout of data set in C\texttt{++} code
     print(arr)
 
 if __name__ == "__main__":

@@ -65,7 +65,7 @@
   \vspace{6pt}
   \pause
 
-  \hspace{10pt} As \textbf{functors} or \textit{function objects}, a common pattern in C++.
+  \hspace{10pt} As \textbf{functors} or \textit{function objects}, a common pattern in C\texttt{++}.
 
   \pause
   \vspace{10pt}
@@ -254,7 +254,7 @@ AtomForceFunctor functor(atomForces, data);
 
 \begin{frame}[fragile]{Using Kokkos for data parallel patterns (7)}
 
-  Functors are tedious $\Rightarrow$ \ul{\textbf{C++11 Lambdas} are concise}
+  Functors are tedious $\Rightarrow$ \ul{\textbf{C\texttt{++}11 Lambdas} are concise}
 
   \vspace{5pt}
 
@@ -278,7 +278,7 @@ Kokkos::parallel_for(numberOfAtoms, @gray
   \pause
   \vspace{7pt}
 
-  \begin{alertblock}{Warning: Lambda capture and C++ containers}
+  \begin{alertblock}{Warning: Lambda capture and C\texttt{++} containers}
     For portability to GPU a lambda must capture by value \texttt{[=]}. \\
     Don't capture containers (\textit{e.g.}, std::vector)
     by value because it will copy the container's entire contents.

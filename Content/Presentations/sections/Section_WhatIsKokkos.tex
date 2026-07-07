@@ -38,7 +38,7 @@
   \end{center}
 
   \begin{scriptsize}
-  \emph{(a)} Initially not working. Now more robust for Fortran than C++, but getting better.
+  \emph{(a)} Initially not working. Now more robust for Fortran than C\texttt{++}, but getting better.
 
   \emph{(b)} Research effort.
 
@@ -81,11 +81,11 @@ Just switching Programming Models costs multiple person-years per app!
 
 \begin{frame}[fragile]{What is Kokkos?}
 	\begin{itemize}
-		\item A C++ Programming Model for Performance Portability
+		\item A C\texttt{++} Programming Model for Performance Portability
 			\begin{itemize}
 				\item Implemented as a template library on top CUDA, HIP, OpenMP, ...
 				\item Aims to be descriptive not prescriptive
-				\item Aligns with developments in the C++ standard
+				\item Aligns with developments in the C\texttt{++} standard
 			\end{itemize}
 		\item Expanding solution for common needs of modern science and engineering codes
 			\begin{itemize}
@@ -120,8 +120,8 @@ Just switching Programming Models costs multiple person-years per app!
 \end{frame}
 
 
-\begin{frame}[fragile]{Kokkos and the C++ Standard}
-  \textbf{Kokkos helps improve ISO C++}
+\begin{frame}[fragile]{Kokkos and the C\texttt{++} Standard}
+  \textbf{Kokkos helps improve ISO C\texttt{++}}
 
 
 	\vspace{-25pt}
@@ -129,18 +129,18 @@ Just switching Programming Models costs multiple person-years per app!
 \end{center}
 
 	\vspace{-25pt}
-\textit{Ten current or former Kokkos team members are members of the ISO C++ standard committee.}
+\textit{Ten current or former Kokkos team members are members of the ISO C\texttt{++} standard committee.}
 \end{frame}
 
 \iffull
-\begin{frame}[fragile]{C++20 std::atomic\_ref}
-	\textbf{C++11 std::atomic insufficient for HPC}
+\begin{frame}[fragile]{C\texttt{++}20 std::atomic\_ref}
+	\textbf{C\texttt{++}11 std::atomic insufficient for HPC}
 	\begin{itemize}
            \item Objects, not functions, with only atomic access
 	   \item Can't use non-atomic access in one operation, and then atomic access in the next
 	\end{itemize}
 
-	\textbf{C++20 std::atomic\_ref adds atomic capabilites as in Kokkos}
+	\textbf{C\texttt{++}20 std::atomic\_ref adds atomic capabilites as in Kokkos}
 	\begin{itemize}
 		\item Can wrap standard allocations.
 		\item Works also for sizes which can't be done lock-free (e.g. \texttt{complex$<$double$>$})
@@ -154,20 +154,20 @@ Just switching Programming Models costs multiple person-years per app!
 // Kokkos today
 Kokkos::atomic_add(&a[i],5.0);
 
-// atomic_ref in ISO C++20
+// atomic_ref in ISO C\texttt{++}20
 std::atomic_ref(a[i]) += 5.0;
   \end{code}
 \end{frame}
 \fi
 
 \iffull
-\begin{frame}[fragile]{C++23 std::mdspan}
-   \textbf{C++ does not provide multi dimensional arrays}
+\begin{frame}[fragile]{C\texttt{++}23 std::mdspan}
+   \textbf{C\texttt{++} does not provide multi dimensional arrays}
 	\begin{itemize}
            \item Every scientific programming language has them: Fortran, Matlab, Python, ... 
 	\end{itemize}
 
-	\textbf{C++23 std::mdspan adds Kokkos::View like arrays}
+	\textbf{C\texttt{++}23 std::mdspan adds Kokkos::View like arrays}
 	\begin{itemize}
 		\item Reference semantics.
 		\item Compile time and runtime extents (also mixed)
@@ -182,7 +182,7 @@ std::atomic_ref(a[i]) += 5.0;
 // Kokkos today
 View<float**[5],LayoutLeft> a("A",10,12); a(3,5,1) = 5;
 
-// mdspan in ISO C++23
+// mdspan in ISO C\texttt{++}23
 using ext = extents<int,dynamic_extent,dynamic_extent,5>;
 mdspan<float,ext,layout_left> a(ptr,10,12); a[3,5,1]+=5;
   \end{code}
@@ -199,7 +199,7 @@ mdspan<float,ext,layout_left> a(ptr,10,12); a[3,5,1]+=5;
 %\begin{itemize}
 %  \item 20 ECP projects list Kokkos as Critical Dependency
 %    \begin{itemize}
-%       \item 41 list C++ as critical
+%       \item 41 list C\texttt{++} as critical
 %       \item 25 list Lapack as critical
 %       \item 21 list Fortran as critical
 %    \end{itemize}

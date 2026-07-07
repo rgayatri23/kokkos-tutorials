@@ -47,9 +47,9 @@
 
 \begin{frame}[fragile]{Kokkos CMake Basics}
 \begin{itemize}
-\item In the spirit of C++ for \emph{code} performance portability, modern CMake aims for \emph{build system} portability
+\item In the spirit of C\texttt{++} for \emph{code} performance portability, modern CMake aims for \emph{build system} portability
 \item Projects that depend on Kokkos should be agnostic to the exact build configuration of Kokkos
-\item No CUDA details in C++! No CUDA details in CMake!
+\item No CUDA details in C\texttt{++}! No CUDA details in CMake!
 \item Kokkos provides a \texttt{Kokkos::kokkos} target.
   \begin{itemize}
   \item Include directories
@@ -333,7 +333,7 @@ packages:
 class myLib(CMakePackage):
   depends_on('kokkos@4.2')
 \end{shell}
-\item Step 2: Add build rule pointing to Spack-installed Kokkos and same C++ compiler Kokkos uses
+\item Step 2: Add build rule pointing to Spack-installed Kokkos and same C\texttt{++} compiler Kokkos uses
 \begin{shell}
 def cmake_args(self):
   options = []

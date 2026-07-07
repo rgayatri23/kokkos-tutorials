@@ -47,8 +47,8 @@
 
 \begin{frame}[fragile]{KokkosKernels CMake Basics}
 \begin{itemize}
-\item In the spirit of C++ for \emph{code} performance portability, modern CMake aims for \emph{build system} portability
-\item Keep builds simple. Language is always C++ (even if CUDA, HIP, Sycl, ...) and all necessary flags are taken care of for you!
+\item In the spirit of C\texttt{++} for \emph{code} performance portability, modern CMake aims for \emph{build system} portability
+\item Keep builds simple. Language is always C\texttt{++} (even if CUDA, HIP, Sycl, ...) and all necessary flags are taken care of for you!
 \item Single build system call in your project should configure everything
 \vskip0.5cm
 \begin{shell}
@@ -75,7 +75,7 @@ target_link_libraries(myLib PUBLIC
 \textbf{Basic starting point for apps using kernels }
 \begin{itemize}
 \item Create a \texttt{CMakeLists.txt} file for an executable
-\uncover<2-> { \item Declare your C++ project }
+\uncover<2-> { \item Declare your C\texttt{++} project }
 \uncover<3-> { \item Find Kokkos Kernels dependency }
 \uncover<4-> { \item Add your program }
 \uncover<5-> { \item Link to Kokkos Kernels (PRIVATE, not transitive) }
@@ -88,7 +88,7 @@ target_link_libraries(myLib PUBLIC
   \btLstHL<5>{8-9}{orange!30}    
 }]
     cmake_minimum_required(VERSION 3.12)
-    project(myProject CXX) # C++ needed to build my project
+    project(myProject CXX) # C\texttt{++} needed to build my project
 
     find_package(KokkosKernels REQUIRED)
 
@@ -103,7 +103,7 @@ target_link_libraries(myLib PUBLIC
 \textbf{Basic starting point for app using kernels as submodule}
 \begin{itemize}
 \item Create \texttt{CMakeLists.txt} for a library with Kokkos built inline
-\uncover<2-> { \item Declare your C++ project }
+\uncover<2-> { \item Declare your C\texttt{++} project }
 \uncover<3-> { \item Add Kokkos as a subdirectory }
 \uncover<4-> { \item Add your program  }
 \uncover<5-> { \item Link your program to Kokkos Kernels }
@@ -116,7 +116,7 @@ target_link_libraries(myLib PUBLIC
   \btLstHL<5>{10-11}{orange!30}    
 }]
     cmake_minimum_required(VERSION 3.12)
-    project(myProject CXX) # C++ needed to build my project
+    project(myProject CXX) # C\texttt{++} needed to build my project
 
     add_subdirectory(kokkos)
     add_subdirectory(kokkos-kernels)
@@ -132,7 +132,7 @@ target_link_libraries(myLib PUBLIC
 \textbf{Basic starting point for helper libraries using kernels: PUBLIC dependencies}
 \begin{itemize}
 \item Create a \texttt{CMakeLists.txt} file for your library
-\uncover<2-> { \item Declare your C++ project }
+\uncover<2-> { \item Declare your C\texttt{++} project }
 \uncover<3-> { \item Find Kokkos Kernels dependency }
 \uncover<4-> { \item Add your library  }
 \uncover<5-> { \item Link your library to Kokkos Kernels. Downstream apps will need Kokkos flags so linkage must be PUBLIC (i.e. transitive) }
@@ -162,7 +162,7 @@ target_link_libraries(myLib PUBLIC
 \begin{frame}[fragile]{Configuring CMake From Command Line}
 \begin{itemize}
 \uncover<2-> { \item Point to your project source }
-\uncover<3-> { \item Use the same C++ complier as Kokkos }
+\uncover<3-> { \item Use the same C\texttt{++} complier as Kokkos }
 \uncover<4-> { \item Point to Kokkos Kernels installation  }
 \uncover<5-> { \item Pass any Kokkos Kernels options }
 \end{itemize}
@@ -260,7 +260,7 @@ packages:
 class myLib(CMakePackage):
   depends_on('kokkos-kernels@3.2')
 \end{shell}
-\item Step 2: Add build rule pointing to Spack-installed Kokkos and same C++ compiler Kokkos uses
+\item Step 2: Add build rule pointing to Spack-installed Kokkos and same C\texttt{++} compiler Kokkos uses
 \begin{shell}
 def cmake_args(self):
   options = []
